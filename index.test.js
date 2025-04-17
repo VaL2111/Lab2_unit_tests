@@ -103,7 +103,7 @@ describe("CircularLinkedCharList", () => {
         list.add("b");
         list.add("c");
         list.extend(other);
-        expect(list.length).toBe(2);
+        expect(list.length).toBe(3);
         expect(list.get(1)).toBe("b");
         expect(list.get(2)).toBe("c");
 
