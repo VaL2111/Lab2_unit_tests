@@ -1,19 +1,19 @@
-const ArrayCharList = require("./index");
+const CircularLinkedCharList = require("./index");
 
-describe("ArrayCharList", () => {
+describe("CircularLinkedCharList", () => {
     let list;
 
     beforeEach(() => {
-        list = new ArrayCharList();
+        list = new CircularLinkedCharList();
     });
 
     test("length() returns 0 for empty list", () => {
-        expect(list.length()).toBe(0);
+        expect(list.length).toBe(0);
     });
 
     test("add() adds a character to the end", () => {
         list.add("a");
-        expect(list.length()).toBe(1);
+        expect(list.length).toBe(1);
         expect(list.get(0)).toBe("a");
     });
 
@@ -33,7 +33,7 @@ describe("ArrayCharList", () => {
         list.add("x");
         const removed = list.removeAt(0);
         expect(removed).toBe("x");
-        expect(list.length()).toBe(0);
+        expect(list.length).toBe(0);
     });
 
     test("removedAt() throws for invalid index", () => {
@@ -45,7 +45,7 @@ describe("ArrayCharList", () => {
         list.add("b");
         list.add("a");
         list.removeAll("a");
-        expect(list.length()).toBe(1);
+        expect(list.length).toBe(1);
         expect(list.get(0)).toBe("b");
     });
 
@@ -63,7 +63,7 @@ describe("ArrayCharList", () => {
         const copy = list.copy();
         expect(copy.get(0)).toBe("m");
         copy.add("n");
-        expect(list.length()).toBe(1);
+        expect(list.length).toBe(1);
     });
 
     test("reverse() reverses the list", () => {
@@ -94,24 +94,24 @@ describe("ArrayCharList", () => {
     test("clear() empties the list", () => {
         list.add("x");
         list.clear();
-        expect(list.length()).toBe(0);
+        expect(list.length).toBe(0);
     });
 
     test("extend() appends another list", () => {
         list.add("a");
-        const other = new ArrayCharList();
+        const other = new CircularLinkedCharList();
         list.add("b");
         list.add("c");
         list.extend(other);
-        expect(list.length()).toBe(3);
+        expect(list.length).toBe(3);
         expect(list.get(1)).toBe("b");
         expect(list.get(2)).toBe("c");
 
         other.add("d");
-        expect(list.length()).toBe(3);
+        expect(list.length).toBe(3);
     });
 
-    test("extend() throws if argument is not ArrayCharList", () => {
+    test("extend() throws if argument is not CircularLinkedCharList", () => {
         expect(() => list.extend({ items: ["x"] })).toThrow();
     });
 });
